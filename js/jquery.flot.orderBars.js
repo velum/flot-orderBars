@@ -81,16 +81,21 @@
         function calculPixel2XWidthConvert(plot){
             var gridDimSize = isHorizontal ? plot.getPlaceholder().innerHeight() : plot.getPlaceholder().innerWidth();
             var minMaxValues = isHorizontal ? getAxeMinMaxValues(plot.getData(),1) : getAxeMinMaxValues(plot.getData(),0);
-            var AxeSize = minMaxValues[1] - minMaxValues[0];
+            var AxeSize = minMaxValues.length == 2 ? minMaxValues[1] - minMaxValues[0] : 0;
             pixelInXWidthEquivalent = AxeSize / gridDimSize;
         }
 
-        function getAxeMinMaxValues(series,AxeIdx){
+        function getAxeMinMaxValues(series,AxeIdx) {
             var minMaxValues = new Array();
-            for(var i = 0; i < series.length; i++){
-                minMaxValues[0] = series[i].data[0][AxeIdx];
-                minMaxValues[1] = series[i].data[series[i].data.length - 1][AxeIdx];
+            for(var i = 0; i < series.length; i++) {
+                if (Array.isArray(series[i].data) && series[i].data.length > 0) {
+                    var minVal = typeof series[i].data[0][AxeIdx] == 'number' ? series[i].data[0][AxeIdx] : 0;
+                    var maxVal = typeof series[i].data[series[i].data.length - 1][AxeIdx] == 'number' ? series[i].data[series[i].data.length - 1][AxeIdx] : series[i].data.length - 1;
+                    minMaxValues[0] = minMaxValues.length > 0 && minMaxValues[0] <= minVal ? minMaxValues[0] : minVal;
+                    minMaxValues[1] = minMaxValues.length > 1 && minMaxValues[1] >= maxVal ? minMaxValues[0] : maxVal;
+                }
             }
+
             return minMaxValues;
         }
 
