@@ -1,8 +1,9 @@
-/*
+/**
  * Flot plugin to order bars side by side.
  *
- * Released under the MIT license by Benjamin BUFFET, 20-Sep-2010.
+ * @license Released under the MIT license by Benjamin BUFFET, 20-Sep-2010.
  * Modifications made by Steven Hall <github.com/emmerich>, 01-May-2013.
+ * Modifications made by Jean-François Beauchamp <github.com/velum>, 19-Feb-2016.
  *
  * This plugin is an alpha version.
  *
@@ -15,14 +16,13 @@
  * The plugin adjust the point by adding a value depanding of the barwidth
  * Exemple for 3 series (barwidth : 0.1) :
  *
- *          first bar décalage : -0.15
- *          second bar décalage : -0.05
- *          third bar décalage : 0.05
+ *          first bar delta : -0.15
+ *          second bar delta : -0.05
+ *          third bar delta : 0.05
  *
+ * The above denote the spacing applied to each bar.
  */
 
-// INFO: decalage/decallage is French for gap. It's used to denote the spacing applied to each
-// bar.
 (function($){
     function init(plot){
         var orderedBarSeries;
@@ -200,7 +200,7 @@
         init: init,
         options: options,
         name: "orderBars",
-        version: "0.2"
+        version: "0.3"
     });
 
 })(jQuery);
