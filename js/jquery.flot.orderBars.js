@@ -3,7 +3,7 @@
  *
  * @license Released under the MIT license by Benjamin BUFFET, 20-Sep-2010.
  * Modifications made by Steven Hall <github.com/emmerich>, 01-May-2013.
- * Modifications made by Jean-François Beauchamp <github.com/velum>, 19-Feb-2016.
+ * Modifications made by Jean-François Beauchamp <github.com/velum>, 04-Apr-2016.
  *
  * This plugin is an alpha version.
  *
@@ -92,7 +92,7 @@
                     var minVal = typeof series[i].data[0][AxeIdx] == 'number' ? series[i].data[0][AxeIdx] : 0;
                     var maxVal = typeof series[i].data[series[i].data.length - 1][AxeIdx] == 'number' ? series[i].data[series[i].data.length - 1][AxeIdx] : series[i].data.length - 1;
                     minMaxValues[0] = minMaxValues.length > 0 && minMaxValues[0] <= minVal ? minMaxValues[0] : minVal;
-                    minMaxValues[1] = minMaxValues.length > 1 && minMaxValues[1] >= maxVal ? minMaxValues[0] : maxVal;
+                    minMaxValues[1] = minMaxValues.length > 1 && minMaxValues[1] >= maxVal ? minMaxValues[1] : maxVal;
                 }
             }
 
